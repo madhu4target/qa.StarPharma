@@ -15,16 +15,16 @@ public class LoginPage extends BasePage {
 	public LoginPage(WebDriver driver) {
 		
 		super(driver);
+		// In order for this code to work and not throw a NullPointerException because 
+		 
+		// the "txtUserName", "txtPassWord" nd "btnLogin" fields aren't instantiated, we need to initialise using pagefactory
+		PageFactory.initElements(driver, this); // Initializes elements
 
 	}
-
-
 
 	@FindBy(xpath = "//input[@id='username']") WebElement txtUserName;
 	@FindBy(how = How.XPATH, using = "//input[@id='password']") WebElement txtPassWord;
 	@FindBy(how = How.XPATH, using = "//input[@id='Login']") WebElement btnLogin;
-	
-
 	
 	public HomePage LoginCredentialsEnter(String LocalUname, String LocalPassword)
 	{
@@ -33,7 +33,12 @@ public class LoginPage extends BasePage {
 		txtPassWord.sendKeys(LocalPassword);
 		btnLogin.click();
 		
-		return new HomePage(driver);
+		
+		//HomePage homePage = new HomePage(driver);  // need to check with Peter.
+		//return homePage;
+		
+		//earlier
+		return new HomePage();  // why this is not a good method?
 	}
 	
 }	

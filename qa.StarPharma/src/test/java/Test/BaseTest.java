@@ -43,7 +43,8 @@ public class BaseTest {
 			} else {
 				System.out.println("Other browser are not ready yet !!!");
 			}
-			driver.get(prop.getProperty("url"));
+			// Now get url to enter from properties file.
+			driver.get(prop.getProperty("url"));  
 		}
 
 		return driver;
@@ -72,7 +73,7 @@ public class BaseTest {
 		if(driver != null)
 		{
 			Thread.sleep(5000);
-			driver.quit();
+			//driver.quit();
 			
 		}
 		
